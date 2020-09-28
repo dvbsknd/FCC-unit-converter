@@ -1,13 +1,23 @@
 'use strict';
 
-const express     = require('express');
-const cors        = require('cors');
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
 
-const apiRoutes         = require('./routes/api.js');
-const fccTestingRoutes  = require('./routes/fcctesting.js');
-const runner            = require('./test-runner');
+const apiRoutes = require('./routes/api.js');
+const fccTestingRoutes = require('./routes/fcctesting.js');
+const runner = require('./test-runner');
 
 const app = express();
+
+// Explicitly prevent MIME type sniffing
+app.use(helmet.noSniff());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc:["'self'"],
+    scriptSrc:["'self'",'code.jquery.com']
+  }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
