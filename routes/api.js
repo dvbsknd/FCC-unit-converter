@@ -14,7 +14,10 @@ module.exports = function (app) {
       const returnUnit = convertHandler.getReturnUnit(initUnit);
       const returnNum = convertHandler.convert(initNum, initUnit);
       const toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
-      res.json({ initNum, initUnit, returnNum, returnUnit, string: toString });
+      if (!initNum) res.json({ error: 'Invalid number' });
+      if (!initUnit) res.json({ error: 'Invalid unit' });
+      if (!initUnit && !initNum) res.json({ error: 'Invalid unit and number' });
+      else res.json({ initNum, initUnit, returnNum, returnUnit, string: toString });
     });
 
 };

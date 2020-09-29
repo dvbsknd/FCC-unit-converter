@@ -10,35 +10,43 @@ function ConvertHandler () {
     'km': ['mi', 'kilometres', 1/1.60934],
   }
 
+  const validUnit = (unit) => Object.keys(units).indexOf(unit) >= 0;
+  const validNumber = (number) => typeof number === 'number';
+
   this.getNum = (input) =>  {
     // Should return only the number component of the input
-    return Number(eval(input.match(re)[1]));
+    return input.match(re) ? Number(eval(input.match(re)[1])) : null;
   };
   
   this.getUnit = (input) =>  {
     // Should return only the supplied unit
-    return input.match(re)[2];
+    const inputUnit = input.match(re)[2];
+    return validUnit(inputUnit) ? inputUnit : null;
   };
   
   this.getReturnUnit = (initUnit) =>  {
     // Should return the target unit based on the input one
-    return units[initUnit][0];
+    return validUnit(initUnit) ? units[initUnit][0] : null;
   };
 
   this.spellOutUnit = (unit) =>  {
     // Return the full spelling of a given unit
-    return units[unit][1];
+    return validUnit(unit) ? units[unit][1] : null;
   };
   
   this.convert = (initNum, initUnit) =>  {
     // Convert supplied number and unit to its equivalent
-    return initNum * units[initUnit][2];
+    return (validNumber(initNum) && validUnit(initUnit)) ? initNum * units[initUnit][2] : null;
   };
   
   this.getString = (initNum, initUnit, returnNum, returnUnit) =>  {
-    const initUnitWord = this.spellOutUnit(initUnit);
-    const returnUnitWord = this.spellOutUnit(returnUnit);
-    return `${initNum} ${initUnitWord} converts to ${returnNum} ${returnUnitWord}`;
+    if (validNumber(initNum) && validUnit(initUnit)) {
+      const initUnitWord = this.spellOutUnit(initUnit);
+      const returnUnitWord = this.spellOutUnit(returnUnit);
+      return `${initNum} ${initUnitWord} converts to ${returnNum} ${returnUnitWord}`;
+    } else {
+      return null;
+    }
   };
   
 }

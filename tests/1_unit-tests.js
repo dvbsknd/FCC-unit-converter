@@ -40,13 +40,13 @@ suite('Unit Tests', function(){
     
     test('Invalid Input (double fraction)', function(done) {
       var input = '32/5/2L';
-      console.log(eval('32/5/2'));
-      assert.equal(convertHandler.getNum(input),16.25);
+      assert.equal(convertHandler.getNum(input),null);
       done();
     });
     
     test('No Numerical Input', function(done) {
-      assert.equal(true,false);
+      var input = 'Thirty L';
+      assert.equal(convertHandler.getNum(input),null);
       done();
     }); 
     
