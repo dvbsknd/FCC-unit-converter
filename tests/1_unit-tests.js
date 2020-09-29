@@ -64,7 +64,7 @@ suite('Unit Tests', function(){
     });
     
     test('Unknown Unit Input', function(done) {
-      assert.equal(true,false);
+      assert.equal(convertHandler.getUnit('inches'),null);
       done();
     });  
     
