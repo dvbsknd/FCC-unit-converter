@@ -6,17 +6,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "export $(cat .env | xargs) && nodemon server.js"
+    "dev": "export $(cat .env | xargs) && nodemon server.js",
+    "test": "mocha tests"
   },
   "dependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
     "cors": "^2.8.1",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
-    "mocha": "^8.1.3",
-    "mongodb": "^3.6.2",
-    "zombie": "^6.0.5"
+    "mongodb": "^3.6.2"
   },
   "engines": {
     "node": "^12.0.0"
@@ -33,6 +30,10 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "zombie": "^6.0.5",
+    "mocha": "^8.1.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0"
   }
 }
