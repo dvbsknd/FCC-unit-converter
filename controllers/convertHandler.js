@@ -1,6 +1,6 @@
 function ConvertHandler () {
   
-  const re = /^(\d+\.?\d*\/?\d*)([a-zA-Z]+)/;
+  const re = /^(\d+\.?\d*\/?\d*)?([a-zA-Z]+)/;
   const units = {
     'gal': ['L', 'gallons', 3.78541],
     'lbs': ['kg', 'pounds', 0.453592],
@@ -15,13 +15,17 @@ function ConvertHandler () {
 
   this.getNum = (input) =>  {
     // Should return only the number component of the input
-    return input.match(re) ? Number(eval(input.match(re)[1])) : null;
+    if (input.match(re)) {
+      return input.match(re)[1] ? Number(eval(input.match(re)[1])) : 1;
+    } else return null;
   };
   
   this.getUnit = (input) =>  {
     // Should return only the supplied unit
-    const inputUnit = input.match(re)[2];
-    return validUnit(inputUnit) ? inputUnit : null;
+    if (input.match(re)) {
+      const inputUnit = input.match(re)[2];
+      return validUnit(inputUnit) ? inputUnit : null;
+    } else return null;
   };
   
   this.getReturnUnit = (initUnit) =>  {
