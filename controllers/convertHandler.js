@@ -7,7 +7,7 @@ function ConvertHandler () {
     'mi': ['km', 'miles', 1.60934],
     'l': ['gal', 'litres', 1/1.60934],
     'kg': ['lbs', 'kilograms', 1/0.453592],
-    'km': ['mi', 'kilometres', 1/1.60934],
+    'km': ['mi', 'kilometers', 1/1.60934],
   }
 
   const validUnit = (unit) => Object.keys(units).indexOf(unit) >= 0;
