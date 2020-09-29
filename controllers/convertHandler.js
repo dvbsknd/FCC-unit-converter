@@ -1,21 +1,25 @@
 function ConvertHandler () {
   
-  const re = /^(\d+\.?\d*\/?\d*)?([a-zA-Z]+)/;
+  const re = /^([\d/.]+)?([a-zA-Z]+)/;
   const units = {
     'gal': ['L', 'gallons', 3.78541],
     'lbs': ['kg', 'pounds', 0.453592],
     'mi': ['km', 'miles', 1.60934],
-    'l': ['gal', 'litres', 1/1.60934],
+    'l': ['gal', 'litres', 1/3.78541],
     'kg': ['lbs', 'kilograms', 1/0.453592],
     'km': ['mi', 'kilometers', 1/1.60934],
   }
 
-  const validUnit = (unit) => Object.keys(units).indexOf(unit.toLowerCase()) >= 0;
+  const validUnit = (unit) => unit ? Object.keys(units).indexOf(unit.toLowerCase()) >= 0 : null;
   const validNumber = (number) => typeof number === 'number';
+  const validInput = (input) => {
+    const slashes = input.match(/\//g);
+    return (slashes && slashes.length !== 1) ? false : true;
+  }
 
   this.getNum = (input) =>  {
     // Should return only the number component of the input
-    if (input.match(re)) {
+    if (validInput(input)) {
       return input.match(re)[1] ? Number(eval(input.match(re)[1])) : 1;
     } else return null;
   };
