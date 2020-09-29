@@ -10,7 +10,7 @@ function ConvertHandler () {
     'km': ['mi', 'kilometers', 1/1.60934],
   }
 
-  const validUnit = (unit) => Object.keys(units).indexOf(unit) >= 0;
+  const validUnit = (unit) => Object.keys(units).indexOf(unit.toLowerCase()) >= 0;
   const validNumber = (number) => typeof number === 'number';
 
   this.getNum = (input) =>  {
@@ -33,17 +33,17 @@ function ConvertHandler () {
   
   this.getReturnUnit = (initUnit) =>  {
     // Should return the target unit based on the input one
-    return validUnit(initUnit) ? units[initUnit][0] : null;
+    return validUnit(initUnit) ? units[initUnit.toLowerCase()][0] : null;
   };
 
   this.spellOutUnit = (unit) =>  {
     // Return the full spelling of a given unit
-    return validUnit(unit) ? units[unit][1] : null;
+    return validUnit(unit) ? units[unit.toLowerCase()][1] : null;
   };
   
   this.convert = (initNum, initUnit) =>  {
     // Convert supplied number and unit to its equivalent
-    return (validNumber(initNum) && validUnit(initUnit)) ? initNum * units[initUnit][2] : null;
+    return (validNumber(initNum) && validUnit(initUnit)) ? initNum * units[initUnit.toLowerCase()][2] : null;
   };
   
   this.getString = (initNum, initUnit, returnNum, returnUnit) =>  {
