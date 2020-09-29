@@ -1,6 +1,4 @@
 /*
-*
-*
 *       FILL IN EACH UNIT TEST BELOW COMPLETELY
 *       -----[Keep the tests in the same order!]----
 *       (if additional are added, keep them at the very end!)
@@ -23,28 +21,33 @@ suite('Unit Tests', function(){
     });
     
     test('Decimal Input', function(done) {
-      
-      //done();
+      var input = '32.1L';
+      assert.equal(convertHandler.getNum(input),32.1);
+      done();
     });
     
     test('Fractional Input', function(done) {
-      
-      //done();
+      var input = '32/2L';
+      assert.equal(convertHandler.getNum(input),16);
+      done();
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      
-      //done();
+      var input = '32.5/2L';
+      assert.equal(convertHandler.getNum(input),16.25);
+      done();
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      var input = '32/5/2L';
+      console.log(eval('32/5/2'));
+      assert.equal(convertHandler.getNum(input),16.25);
+      done();
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      assert.equal(true,false);
+      done();
     }); 
     
   });
@@ -54,14 +57,14 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
       input.forEach(function(ele) {
-        //assert
+        assert.equal(true,false);
       });
       done();
     });
     
     test('Unknown Unit Input', function(done) {
-      
-      //done();
+      assert.equal(true,false);
+      done();
     });  
     
   });
@@ -83,6 +86,7 @@ suite('Unit Tests', function(){
     
     test('For Each Valid Unit Inputs', function(done) {
       //see above example for hint
+      assert.equal(true,false);
       done();
     });
     
@@ -99,27 +103,32 @@ suite('Unit Tests', function(){
     
     test('L to Gal', function(done) {
       
-      //done();
+      assert.equal(true,false);
+      done();
     });
     
     test('Mi to Km', function(done) {
       
-      //done();
+      assert.equal(true,false);
+      done();
     });
     
     test('Km to Mi', function(done) {
       
-      //done();
+      assert.equal(true,false);
+      done();
     });
     
     test('Lbs to Kg', function(done) {
       
-      //done();
+      assert.equal(true,false);
+      done();
     });
     
     test('Kg to Lbs', function(done) {
       
-      //done();
+      assert.equal(true,false);
+      done();
     });
     
   });
