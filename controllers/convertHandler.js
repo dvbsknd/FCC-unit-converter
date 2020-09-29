@@ -5,7 +5,7 @@ function ConvertHandler () {
     'gal': ['L', 'gallons', 3.78541],
     'lbs': ['kg', 'pounds', 0.453592],
     'mi': ['km', 'miles', 1.60934],
-    'L': ['gal', 'litres', 1/1.60934],
+    'l': ['gal', 'litres', 1/1.60934],
     'kg': ['lbs', 'kilograms', 1/0.453592],
     'km': ['mi', 'kilometres', 1/1.60934],
   }
@@ -23,9 +23,12 @@ function ConvertHandler () {
   this.getUnit = (input) =>  {
     // Should return only the supplied unit
     if (input.match(re)) {
-      const inputUnit = input.match(re)[2];
-      return validUnit(inputUnit) ? inputUnit : null;
-    } else return null;
+      const inputUnit = input.match(re)[2].toLowerCase();
+      if (validUnit(inputUnit)) {
+        return inputUnit === 'l' ? 'L' : inputUnit;
+      }
+    }
+    return null;
   };
   
   this.getReturnUnit = (initUnit) =>  {

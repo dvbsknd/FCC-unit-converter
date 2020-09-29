@@ -55,9 +55,10 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getUnit(input)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
-      input.forEach(function(ele) {
-        assert.equal(true,false);
+      const input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+      const output = ['gal','L','mi','km','lbs','kg','gal','L','mi','km','lbs','kg'];
+      input.forEach(function(ele, idx) {
+        assert.equal(convertHandler.getUnit(ele), output[idx], 'Unit lookup failed');
       });
       done();
     });
