@@ -43,7 +43,7 @@ function ConvertHandler () {
   
   this.convert = (initNum, initUnit) =>  {
     // Convert supplied number and unit to its equivalent
-    return (validNumber(initNum) && validUnit(initUnit)) ? Number(initNum * units[initUnit.toLowerCase()][2]).toFixed(5) : null;
+    return (validNumber(initNum) && validUnit(initUnit)) ? Number((initNum * units[initUnit.toLowerCase()][2]).toFixed(4)) : null;
   };
   
   this.getString = (initNum, initUnit, returnNum, returnUnit) =>  {
