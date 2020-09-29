@@ -2,7 +2,7 @@ function ConvertHandler () {
   
   const re = /^([\d/.]+)?([a-zA-Z]+)/;
   const units = {
-    'gal': ['L', 'gallons', 3.78541],
+    'gal': ['l', 'gallons', 3.78541],
     'lbs': ['kg', 'pounds', 0.453592],
     'mi': ['km', 'miles', 1.60934],
     'l': ['gal', 'litres', 1/3.78541],
@@ -28,12 +28,10 @@ function ConvertHandler () {
     // Should return only the supplied unit
     if (input.match(re)) {
       const inputUnit = input.match(re)[2].toLowerCase();
-      if (validUnit(inputUnit)) {
-        return inputUnit === 'l' ? 'L' : inputUnit;
-      }
+      return validUnit(inputUnit) ? inputUnit : null;
     }
     return null;
-  };
+  }
   
   this.getReturnUnit = (initUnit) =>  {
     // Should return the target unit based on the input one
@@ -47,7 +45,7 @@ function ConvertHandler () {
   
   this.convert = (initNum, initUnit) =>  {
     // Convert supplied number and unit to its equivalent
-    return (validNumber(initNum) && validUnit(initUnit)) ? Number((initNum * units[initUnit.toLowerCase()][2]).toFixed(4)) : null;
+    return (validNumber(initNum) && validUnit(initUnit)) ? Number((initNum * units[initUnit.toLowerCase()][2]).toFixed(5)) : null;
   };
   
   this.getString = (initNum, initUnit, returnNum, returnUnit) =>  {

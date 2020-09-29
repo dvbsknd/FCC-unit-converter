@@ -56,7 +56,7 @@ suite('Unit Tests', function(){
     
     test('For Each Valid Unit Inputs', function(done) {
       const input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
-      const output = ['gal','L','mi','km','lbs','kg','gal','L','mi','km','lbs','kg'];
+      const output = ['gal','l','mi','km','lbs','kg','gal','l','mi','km','lbs','kg'];
       input.forEach(function(ele, idx) {
         assert.equal(convertHandler.getUnit(ele), output[idx], 'Unit lookup failed');
       });
@@ -74,7 +74,7 @@ suite('Unit Tests', function(){
     
     test('For Each Valid Unit Inputs', function(done) {
       var input = ['gal','l','mi','km','lbs','kg'];
-      var expect = ['L','gal','km','mi','kg','lbs'];
+      var expect = ['l','gal','km','mi','kg','lbs'];
       input.forEach(function(ele, i) {
         assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
       });
