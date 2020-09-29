@@ -9,8 +9,8 @@ Forked from the [supplied boilerplate repository](https://github.com/freeCodeCam
 From the original repo:
 
 > 1. Most logic will need done in `controllers/convertHandler.js` but do complete `routes/api.js`
-1. You will add any security features to `server.js`
-1. You will create all of the functional/unit tests in `tests/2_functional-tests.js` and `tests/1_unit-tests.js`
+> 1. You will add any security features to `server.js`
+> 1. You will create all of the functional/unit tests in `tests/2_functional-tests.js` and `tests/1_unit-tests.js`
 
 ## Services
 
